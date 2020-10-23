@@ -3,8 +3,7 @@ using System.IO;
 using System.ServiceModel;
 
 namespace ClientContract
-{
-    
+{    
     public interface IPushCallback
     {
         [OperationContract(IsOneWay = true)]

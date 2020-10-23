@@ -1,16 +1,14 @@
-﻿//----------------------------------------------------------------
-// Copyright (c) Microsoft Corporation.  All rights reserved.
-//----------------------------------------------------------------
+﻿using CoreWCF;
+using Helpers;
+using ServiceContract;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+
 namespace Services
 {
-    using CoreWCF;
-    using Helpers;
-    using ServiceContract;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Threading;
-
+    
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple,IncludeExceptionDetailInFaults =true)]
     public class DuplexService :  IDuplexService
     {
