@@ -38,6 +38,7 @@ namespace CoreWCF.Http.Tests
                 proxy.UploadData("Third Request");
                 proxy.GetLog();
                 _output.WriteLine("Data sent, waiting for log data in local callback instance");
+
                 if (!callback.LogReceived.WaitOne(TimeSpan.FromSeconds(60)))
                 {
                     throw new Exception("Log not received from service");

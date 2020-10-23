@@ -38,7 +38,6 @@ namespace Helpers
             };
         }
 
-
         public static NetHttpBinding GetNetHttpBinding()
         {
             var binding = new NetHttpBinding();
@@ -59,10 +58,10 @@ namespace Helpers
         //    MessageEncodingBindingElement encodingBindingElement = new TextMessageEncodingBindingElement(messageVersion, Encoding.Unicode);
         //    httpTransportBindingElement.TransferMode = TransferMode.Streamed;
         //    return new CustomBinding(new BindingElement[]
-        //{
+        //    {
         //        encodingBindingElement,
         //        httpTransportBindingElement
-        //})
+        //    })
         //    {
         //        SendTimeout = TimeSpan.FromMinutes(20.0),
         //        ReceiveTimeout = TimeSpan.FromMinutes(20.0),
@@ -102,15 +101,15 @@ namespace Helpers
             })
 #endif // DEBUG
             .UseKestrel(options =>
+            {
+                options.Listen(IPAddress.Loopback, 8080, listenOptions =>
                 {
-                    options.Listen(IPAddress.Loopback, 8080, listenOptions =>
+                    if (Debugger.IsAttached)
                     {
-                        if (Debugger.IsAttached)
-                        {
-                            listenOptions.UseConnectionLogging();
-                        }
-                    });
-                })
+                        listenOptions.UseConnectionLogging();
+                    }
+                });
+            })
             .UseStartup<TStartup>();
 
         public static IWebHostBuilder CreateWebHostBuilder(ITestOutputHelper outputHelper, Type startupType) =>

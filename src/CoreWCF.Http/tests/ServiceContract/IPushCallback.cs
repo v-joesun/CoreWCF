@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace ServiceContract
-{
-    
+{    
     public interface IPushCallback
     {
         [OperationContract(IsOneWay = true)]

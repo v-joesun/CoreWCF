@@ -7,18 +7,15 @@ using System.IO;
 using System.Threading;
 
 namespace Services
-{
-    
+{    
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple,IncludeExceptionDetailInFaults =true)]
     public class DuplexService :  IDuplexService
     {
         private string exceptionstring = string.Empty;
         List<string> log = new List<string>();
         static bool continuePushingData;
-
         static int seed = DateTime.Now.Millisecond;
         static Random rand = new Random(seed);
-
         static FlowControlledStream localStream;
 
         public void UploadData(string data)

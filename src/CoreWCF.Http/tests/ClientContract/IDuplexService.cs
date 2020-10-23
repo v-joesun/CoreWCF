@@ -2,12 +2,10 @@
 using System.ServiceModel;
 
 namespace ClientContract
-{
-    
+{    
     [ServiceContract(CallbackContract = typeof(ClientContract.IPushCallback))]
     public interface IDuplexService
     {
-        // Request-Reply operations
         [OperationContract]
         string GetExceptionString();
 
@@ -23,7 +21,6 @@ namespace ClientContract
         [OperationContract]
         Stream DownloadStream();
 
-        // Duplex operations
         [OperationContract(IsOneWay = true)]
         void StartPushingData();
 
@@ -39,7 +36,6 @@ namespace ClientContract
         [OperationContract(IsOneWay = true)]
         void StopPushingStream();
 
-        // Logging
         [OperationContract(IsOneWay = true)]
         void GetLog();
     }

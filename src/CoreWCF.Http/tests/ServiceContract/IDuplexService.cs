@@ -6,7 +6,6 @@ namespace ServiceContract
     [ServiceContract(CallbackContract = typeof(ServiceContract.IPushCallback))]
     public interface IDuplexService
     {
-        // Request-Reply operations
         [OperationContract]
         string GetExceptionString();
 
@@ -22,7 +21,6 @@ namespace ServiceContract
         [OperationContract]
         Stream DownloadStream();
 
-        // Duplex operations
         [OperationContract(IsOneWay = true)]
         void StartPushingData();
 
@@ -38,7 +36,6 @@ namespace ServiceContract
         [OperationContract(IsOneWay = true)]
         void StopPushingStream();
 
-        // Logging
         [OperationContract(IsOneWay = true)]
         void GetLog();
     }
