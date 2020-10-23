@@ -51,6 +51,16 @@ namespace CoreWCF
             }
         }
 
+        [DefaultValue(false)]
+        public bool IncludeExceptionDetailInFaults
+        {
+            get { return _includeExceptionDetailInFaults; }
+            set
+            {
+                _includeExceptionDetailInFaults = value;
+            }
+        }
+
         [DefaultValue(null)]
         public string ConfigurationName
         {
